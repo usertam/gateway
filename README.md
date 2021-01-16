@@ -12,6 +12,12 @@ bash energized.sh
 docker build --no-cache -t gateway:latest .
 ```
 
+## Stop/disable resolving services on port 53
+```sh
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+```
+
 ## Run built docker image
 ```sh
 docker run -d \
@@ -24,6 +30,11 @@ docker run -d \
 Or if you prefer a simple oneliner:
 ```sh
 docker run -d -v $PWD/hosts:/hosts -p 53:53/tcp -p 53:53/udp --name gateway gateway:latest
+```
+
+## Check logs on running container
+```sh
+docker logs gateway
 ```
 
 [Energized Protection]: https://energized.pro
