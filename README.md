@@ -7,27 +7,25 @@ Fetch the "Ultimate Pack" from [Energized Protection], and store the hosts file 
 bash energized.sh
 ```
 
-## Build docker image
-```sh
-docker build --no-cache -t gateway:latest .
-```
-
 ## Stop/disable resolving services on port 53
 ```sh
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
 ```
 
-## Run built docker image
+## Build using docker-compose
 ```sh
-docker run -d \
-    -v $PWD/hosts:/hosts \
-    -p 53:53/tcp -p 53:53/udp \
-    --name gateway \
-    gateway:latest
+docker-compose up -d
 ```
 
-Or if you prefer a simple oneliner:
+## Build manually
+
+### Build docker image
+```sh
+docker build --no-cache -t gateway:latest .
+```
+
+### Run built docker image
 ```sh
 docker run -d -v $PWD/hosts:/hosts -p 53:53/tcp -p 53:53/udp --name gateway gateway:latest
 ```
