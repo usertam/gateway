@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  samba:
+    build: .
+    container_name: gateway
+    ports:
+      - "53:53"
+      - "53:53/udp"
+    volumes:
+      - ./hosts:/hosts
+    restart: unless-stopped
