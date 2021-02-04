@@ -1,13 +1,14 @@
 # Project Gateway
-This project was put together for my home Raspberry Pi, to run a DNS server with DoH and custom hosts (blocking/redirecting) capabilities, based on dnsmasq and dnscrypt-proxy. By default, it makes use of Cloudflare DNS servers, as well as host files from [Energized Protection]. 
+This project was put together for my home Raspberry Pi, to run a DNS server with DoH and custom hosts (blocking/redirecting) capabilities, based on dnsmasq and dnscrypt-proxy. By default, it makes use of Cloudflare DNS servers, as well as ad-blocking hosts files from [Energized Protection]. 
 
-## Download hosts
+## Download ad-blocking hosts
 Fetch the "Ultimate Pack" from [Energized Protection], and store the hosts file ```energized``` under ```hosts/```. 
 ```sh
 bash energized.sh
 ```
 
-## Stop/disable resolving services on port 53
+## Stop/disable local resolving services
+This will replace your local resolving services running on port 53, stop them first before continuing. 
 ```sh
 sudo systemctl stop systemd-resolved
 sudo systemctl disable systemd-resolved
